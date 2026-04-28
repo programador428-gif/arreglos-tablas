@@ -36,3 +36,9 @@ function pintarArregloIzquierdo() {
   }
   tbody.innerHTML = contenidodTabla;
 }
+
+// Funciones para eliminar
+function eliminarIzquierdo(indice) {
+  edadesIzquierda.splice(indice, 1);
+  pintarArregloIzquierdo();
+}
