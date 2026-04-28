@@ -66,3 +66,8 @@ function eliminarIzquierdo(indice) {
   edadesIzquierda.splice(indice, 1);
   pintarArregloIzquierdo();
 }
+
+function eliminarDerecha(indice) {
+  edadesDerecha.splice(indice, 1);
+  pintarArregloDerecha();
+}
