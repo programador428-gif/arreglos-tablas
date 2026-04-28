@@ -2,63 +2,57 @@ let edadesIzquierda = [];
 let edadesDerecha = [];
 
 function agregarEdad() {
-  let edad = parseInt(document.getElementById("edad").value);
+  let input = document.getElementById("edad");
+  let edad = parseInt(input.value);
 
   if (!isNaN(edad)) {
     edadesIzquierda.push(edad);
+    input.value = "";
     pintarArregloIzquierdo();
-  }
-  else {
+  } else {
     alert('Por favor ingrese un numero valido');
-    return;
   }
 }
 
 // Funciones para pintar
 function pintarArregloIzquierdo() {
   let tbody = document.getElementById('tablaIzquierda');
-  let contenidodTabla = '';
-  let edadRecuperada;
+  let contenidoTabla = '';
 
   for (let i = 0; i < edadesIzquierda.length; i++) {
-    edadRecuperada = edadesIzquierda[i];
-    contenidodTabla += `
+    contenidoTabla += `
       <tr>
-        <td>${edadRecuperada}</td>
+        <td>${edadesIzquierda[i]}</td>
         <td>
-          <button class="btn-eliminar" onclick="eliminarIzquierdo(${i})">Eliminar</ button>
+          <button class="btn-eliminar" onclick="eliminarIzquierdo(${i})">Eliminar</button>
         </td>
         <td>
-          <button class="btn-mover" onclick="moverHaciaDerecha(${i}, ${edadRecuperada})">→</button>
+          <button class="btn-mover" onclick="moverHaciaDerecha(${i})">➜</button>
         </td>
       </tr>
-    `
+    `;
   }
-  tbody.innerHTML = contenidodTabla;
+  tbody.innerHTML = contenidoTabla;
 }
 
 function pintarArregloDerecha() {
   let tbody = document.getElementById('tablaDerecha');
-  let contenidodTabla = '';
-  let edadRecuperada;
+  let contenidoTabla = '';
 
   for (let i = 0; i < edadesDerecha.length; i++) {
-    edadRecuperada = edadesDerecha[i];
-    contenidodTabla += `
+    contenidoTabla += `
       <tr>
         <td>
-          <button class="btn-mover" onclick="moverHaciaIzquierda(${i}, ${edadRecuperada})">⬅</button>
+          <button class="btn-mover" onclick="moverHaciaIzquierda(${i})">⬅</button>
         </td>
+        <td>${edadesDerecha[i]}</td>
         <td>
-          ${edadRecuperada}
-        </td>
-        <td>
-          <button class="btn-eliminar" onclick="eliminarDerecha(${i})">Eliminar</ button>
+          <button class="btn-eliminar" onclick="eliminarDerecha(${i})">Eliminar</button>
         </td>
       </tr>
-    `
+    `;
   }
-  tbody.innerHTML = contenidodTabla;
+  tbody.innerHTML = contenidoTabla;
 }
 
 // Funciones para eliminar
@@ -73,14 +67,18 @@ function eliminarDerecha(indice) {
 }
 
 // Funciones para mover
-function moverHaciaDerecha(indice, edadDerecha) {
-  edadesDerecha.push(edadDerecha);
-  eliminarIzquierdo(indice);
+function moverHaciaDerecha(indice) {
+  let edad = edadesIzquierda[indice];
+  edadesDerecha.push(edad);
+  edadesIzquierda.splice(indice, 1);
+  pintarArregloIzquierdo();
   pintarArregloDerecha();
 }
 
-function moverHaciaIzquierda(indice, edadIzquierda) {
-  edadesIzquierda.push(edadIzquierda);
-  eliminarDerecha(indice);
+function moverHaciaIzquierda(indice) {
+  let edad = edadesDerecha[indice];
+  edadesIzquierda.push(edad);
+  edadesDerecha.splice(indice, 1);
   pintarArregloIzquierdo();
+  pintarArregloDerecha();
 }
