@@ -13,3 +13,26 @@ function agregarEdad() {
     return;
   }
 }
+
+// Funciones para pintar
+function pintarArregloIzquierdo() {
+  let tbody = document.getElementById('tablaIzquierda');
+  let contenidodTabla = '';
+  let edadRecuperada;
+
+  for (let i = 0; i < edadesIzquierda.length; i++) {
+    edadRecuperada = edadesIzquierda[i];
+    contenidodTabla += `
+      <tr>
+        <td>${edadRecuperada}</td>
+        <td>
+          <button class="btn-eliminar" onclick="eliminarIzquierdo(${i})">Eliminar</ button>
+        </td>
+        <td>
+          <button class="btn-mover" onclick="moverHaciaDerecha(${i}, ${edadRecuperada})">→</button>
+        </td>
+      </tr>
+    `
+  }
+  tbody.innerHTML = contenidodTabla;
+}
