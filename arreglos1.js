@@ -71,3 +71,16 @@ function eliminarDerecha(indice) {
   edadesDerecha.splice(indice, 1);
   pintarArregloDerecha();
 }
+
+// Funciones para mover
+function moverHaciaDerecha(indice, edadDerecha) {
+  edadesDerecha.push(edadDerecha);
+  eliminarIzquierdo(indice);
+  pintarArregloDerecha();
+}
+
+function moverHaciaIzquierda(indice, edadIzquierda) {
+  edadesIzquierda.push(edadIzquierda);
+  eliminarDerecha(indice);
+  pintarArregloIzquierdo();
+}
