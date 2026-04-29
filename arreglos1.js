@@ -83,6 +83,20 @@ function moverHaciaIzquierda(indice) {
   pintarArregloDerecha();
 }
 
+function moverTodoDerecha() {
+  edadesDerecha.push(...edadesIzquierda);
+  edadesIzquierda = [];
+  pintarArregloIzquierdo();
+  pintarArregloDerecha();
+}
+
+function moverTodoIzquierda() {
+  edadesIzquierda.push(...edadesDerecha);
+  edadesDerecha = [];
+  pintarArregloIzquierdo();
+  pintarArregloDerecha();
+}
+
 // Funcion para eliminar tabla
 function limpiarTablas() {
   edadesIzquierda = [];
