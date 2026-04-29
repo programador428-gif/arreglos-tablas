@@ -82,3 +82,11 @@ function moverHaciaIzquierda(indice) {
   pintarArregloIzquierdo();
   pintarArregloDerecha();
 }
+
+// Funcion para eliminar tabla
+function limpiarTablas() {
+  edadesIzquierda = [];
+  edadesDerecha = [];
+  pintarArregloIzquierdo();
+  pintarArregloDerecha();
+}
